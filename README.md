@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React Avançado: Crie aplicações com NextJS, Strapi e mais
 
-## Getting Started
+### https://www.udemy.com/course/react-avancado/
 
-First, run the development server:
+Neste arquivo irei documentar novas funcionalidades que eu for aprendendo durante o curso.
+
+## Git hooks
+
+## [Husky ](https://typicode.github.io/husky/getting-started.html)
+
+Husky é uma ferramenta que permite executar comandos antes de realizar um commit.
+
+## [lint-staged](https://prettier.io/docs/en/install)
+
+O lint-staged é uma ferramenta que permite executar comandos apenas nos arquivos que serão commitados (staged).
+
+## Configurando o [Jest](https://jestjs.io/pt-BR/docs/getting-started)
+
+O Jest é um framework de testes unitários para Javascript.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  npm install --save-dev jest @types/jest jest-environment-jsdom
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Criar o arquivo jest.config.js na raiz do projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```javascript
+module.exports = {
+  testEnvironment: 'jsdom',
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
+  collectCoverage: true,
+  collectCoverageFrom: ['src/**/*.ts(x)'],
+  setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
+  modulePaths: ['<rootDir>/src/'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }]
+  }
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 2. Adicionar scripts no package.json
 
-## Learn More
+```bash
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch --maxWorkers=25%",
+    "test:ci": "jest --runInBand"
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Criar o arquico setup.ts dentro da pasta .jest
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```javascript
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## [Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Configurando o react-testing-library
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+  npm install --save-dev @testing-library/react @testing-library/jest-dom @testing-library/user-event
+```
+
+### Adicionar no .jest/setup.ts
+
+```javascript
+import '@testing-library/jest-dom'
+```
