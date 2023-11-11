@@ -3,11 +3,21 @@ import Main from '.'
 
 describe('<Main />', () => {
   it('should render the heading', () => {
-    // renmatTooltipHideDelay=""riza o component
-    render(<Main />)
+    // renderiza o component
+    const { container } = render(<Main />)
     // busca o elemento e verifica se ele existe
     expect(
       screen.getByRole('heading', { name: /react avançado/i })
     ).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render the colors correctly', () => {
+    // renderiza o component
+    const { container } = render(<Main />)
+
+    //verifica se o background esta correto
+    expect(container.firstChild).toHaveStyle({ 'background-color': '#06092b' })
   })
 })
