@@ -7,7 +7,7 @@ describe('<Main />', () => {
     const { container } = render(<Main />)
     // busca o elemento e verifica se ele existe
     expect(
-      screen.getByRole('heading', { name: /react avançado/i })
+      screen.getByRole('heading', { name: /Boilerplate NextJs Apps Router/i })
     ).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
