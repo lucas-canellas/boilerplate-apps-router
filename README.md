@@ -65,4 +65,3 @@ module.exports = {
 ```javascript
 import '@testing-library/jest-dom'
 ```
-
