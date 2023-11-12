@@ -20,5 +20,8 @@ exports[`<Main /> should render the heading 1`] = `
   <h1>
     Boilerplate NextJs Apps Router
   </h1>
+  <h2>
+    Boilerplate criado no curso React Avançado
+  </h2>
 </main>
 `;

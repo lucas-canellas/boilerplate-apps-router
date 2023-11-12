@@ -1,8 +1,17 @@
 import * as S from './styles'
 
-const Main = () => (
+// interface MainProps {
+//   title: string;
+//   description: string
+// }
+
+const Main = ({
+  title = 'Boilerplate NextJs Apps Router',
+  description = 'Boilerplate criado no curso React Avançado'
+}) => (
   <S.Wrapper>
-    <h1>Boilerplate NextJs Apps Router</h1>
+    <h1>{title}</h1>
+    <h2>{description}</h2>
   </S.Wrapper>
 )
 
